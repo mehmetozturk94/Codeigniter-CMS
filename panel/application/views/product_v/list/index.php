@@ -24,7 +24,7 @@
     <main id="app-main" class="app-main">
         <div class="wrap">
             <section class="app-content">
-                <?php $this->load->view("dashboard/content"); ?>
+                <?php $this->load->view("{$viewFolder}/{$subViewFolder}/content"); ?>
             </section>
             <!-- #dash-content -->
         </div><!-- .wrap -->
@@ -33,10 +33,6 @@
         <!-- /#app-footer -->
     </main>
     <!--========== END app main -->
-
-    <!-- SIDE PANEL -->
-    <?php $this->load->view("includes/right-sidebar"); ?>
-    <!-- /#side-panel -->
 
     <?php $this->load->view('includes/include_script'); ?>
 </body>

@@ -2,8 +2,8 @@
     <div class="col-md-6 col-sm-6">
         <div class="widget p-md clearfix">
             <div class="pull-left">
-                <h3 class="widget-title">Mehmet Öztürk CMS Sistemine Hoşgeldiniz</h3>
-                <small class="text-color">Number of views</small>
+                <h3 class="widget-title">Mehmet Öztürk CMS Sistemine Hoşgeldiniz !</h3>
+                <small class="text-color">Günlük Site Ziyaretçi Sayısı</small>
             </div>
             <span class="pull-right fz-lg fw-500 counter" data-plugin="counterUp">102</span>
         </div><!-- .widget -->
@@ -12,8 +12,8 @@
     <div class="col-md-6 col-sm-6">
         <div class="widget p-md clearfix">
             <div class="pull-left">
-                <h3 class="widget-title">Active</h3>
-                <small class="text-color">Loads / contact</small>
+                <h3 class="widget-title">Aktif</h3>
+                <small class="text-color">Kullanıcı Sayısı</small>
             </div>
             <span class="pull-right fz-lg fw-500 counter" data-plugin="counterUp">325</span>
         </div><!-- .widget -->

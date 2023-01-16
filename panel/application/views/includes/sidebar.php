@@ -90,7 +90,7 @@
                 </li>
 
                 <li>
-                    <a href="javascript:void(0)">
+                    <a href="<?php echo base_url('products'); ?>">
                         <i class="menu-icon fa fa-cubes"></i>
                         <span class="menu-text">Ürünler</span>
                     </a>
@@ -150,7 +150,7 @@
                 </li>
 
                 <li>
-                    <a href="javascript:void(0)">
+                    <a href="<?php echo base_url() ?>">
                         <i class="menu-icon zmdi zmdi-view-web zmdi-hc-lg"></i>
                         <span class="menu-text">Anasayfa</span>
                     </a>

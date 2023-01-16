@@ -9,6 +9,7 @@ class Products extends CI_Controller {
 	{
 		parent::__construct();
 		$this->viewFolder = "product_v";
+		$this->load->model("product_model");
 	}
 
 	public function index()
@@ -17,6 +18,9 @@ class Products extends CI_Controller {
         $viewData->viewFolder = $this->viewFolder;
         $viewData->subViewFolder = 'list';
         
+		$items = $this->product_model->get_all();
+		$viewData->items = $items;
+		
 		$this->load->view("{$this->viewFolder}/{$viewData->subViewFolder}/index",$viewData);
 	}
 }

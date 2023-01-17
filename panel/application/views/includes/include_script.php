@@ -9,7 +9,8 @@
 <!-- endbuild -->
 
 <!-- build:js <?php echo base_url("assets"); ?>/assets/js/app.min.js -->
-<script src="<?php echo base_url("assets"); ?>/assets/js/app.min.js"></script>
+<!-- <script src="<?php echo base_url("assets"); ?>/assets/js/app.min.js"></script> -->
+<?php $this->load->view("includes/library"); ?>
 <!-- endbuild -->
 <script src="<?php echo base_url("assets"); ?>/libs/bower/moment/moment.js"></script>
 <script src="<?php echo base_url("assets"); ?>/libs/bower/fullcalendar/dist/fullcalendar.min.js"></script>

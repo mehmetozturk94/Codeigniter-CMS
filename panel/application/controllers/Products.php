@@ -23,4 +23,17 @@ class Products extends CI_Controller {
 		
 		$this->load->view("{$this->viewFolder}/{$viewData->subViewFolder}/index",$viewData);
 	}
+
+	public function add(){
+
+		$addData = new stdClass();
+		$addData->addFolder = $this->viewFolder;
+		$addData->addSubFolder = 'add';
+		
+		$this->load->view("{$addData->addFolder}/{$addData->addSubFolder}/index",$addData);
+		
+	}
+	public function save(){
+		echo "kaydet";
+	}
 }

@@ -1,39 +1,102 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Products extends CI_Controller {
+class Products extends CI_Controller
+{
+    public $viewFolder = "";
 
-	public $viewFolder = "";
+    public function __construct()
+    {
 
-	public function __construct()
-	{
-		parent::__construct();
-		$this->viewFolder = "product_v";
-		$this->load->model("product_model");
-	}
+        parent::__construct();
 
-	public function index()
-	{
+        $this->viewFolder = "product_v";
+
+        $this->load->model("product_model");
+
+    }
+
+    public function index(){
+
         $viewData = new stdClass();
+
+        /** Tablodan Verilerin Getirilmesi.. */
+        $items = $this->product_model->get_all();
+
+        /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
         $viewData->viewFolder = $this->viewFolder;
-        $viewData->subViewFolder = 'list';
-        
-		$items = $this->product_model->get_all();
-		$viewData->items = $items;
-		
-		$this->load->view("{$this->viewFolder}/{$viewData->subViewFolder}/index",$viewData);
-	}
+        $viewData->subViewFolder = "list";
+        $viewData->items = $items;
 
-	public function add(){
+        $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+    }
 
-		$addData = new stdClass();
-		$addData->addFolder = $this->viewFolder;
-		$addData->addSubFolder = 'add';
-		
-		$this->load->view("{$addData->addFolder}/{$addData->addSubFolder}/index",$addData);
-		
-	}
-	public function save(){
-		echo "kaydet";
-	}
+
+    public function add(){
+
+        $viewData = new stdClass();
+
+        /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+        $viewData->viewFolder = $this->viewFolder;
+        $viewData->subViewFolder = "add";
+
+        $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+
+    }
+
+    public function save(){
+
+        $this->load->library("form_validation");
+
+        // Kurallar yazilir..
+        $this->form_validation->set_rules("title", "Başlık", "required|trim");
+
+        $this->form_validation->set_message(
+            array(
+                "required"  => "<b>{field}</b> alanı doldurulmalıdır"
+            )
+        );
+
+        // Form Validation Calistirilir..
+        // TRUE - FALSE
+        $validate = $this->form_validation->run();
+
+        if($validate){
+
+            $insert = $this->product_model->add(
+                array (
+                    "title" => $this->input->post("title"),
+                    "description" => $this->input->post("description"),
+                    "url" => "test",
+                    "rank" => 0,
+                    "isActive" => 1,
+                    "created_at" => date("Y-m-d H:i:s")
+                )
+                );
+            if($insert){
+                echo "Kayıt Başarılıdır !";
+            }else{
+                echo "Kayıt Başarısızdır !";
+            }
+
+        } else {
+
+            $viewData = new stdClass();
+
+            /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+            $viewData->viewFolder = $this->viewFolder;
+            $viewData->subViewFolder = "add";
+            $viewData->form_error = true;
+
+            $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+        }
+
+        // Başarılı ise
+            // Kayit işlemi baslar
+        // Başarısız ise
+            // Hata ekranda gösterilir...
+
+    }
+
+
 }

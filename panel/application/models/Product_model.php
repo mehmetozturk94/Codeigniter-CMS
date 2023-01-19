@@ -11,5 +11,10 @@ class Product_model extends CI_Model{
         
         return $this->db->get($this->tableName)->result();
     }
+
+    public function add($data = array()){
+        
+        $this->db->insert($this->tableName, $data);
+    }
 }
 ?>

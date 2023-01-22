@@ -67,16 +67,16 @@ class Products extends CI_Controller
                 array (
                     "title" => $this->input->post("title"),
                     "description" => $this->input->post("description"),
-                    "url" => "test",
+                    "url" => convertSEO($this->input->post("title")),
                     "rank" => 0,
                     "isActive" => 1,
                     "created_at" => date("Y-m-d H:i:s")
                 )
                 );
             if($insert){
-                echo "Kayıt Başarılıdır !";
+                redirect(base_url("products"));
             }else{
-                echo "Kayıt Başarısızdır !";
+                redirect(base_url("products"));
             }
 
         } else {
@@ -98,5 +98,82 @@ class Products extends CI_Controller
 
     }
 
+    public function update($id){
+
+        $item = $this->product_model->get(
+            array(
+                "id" => $id,
+                "isActive" => 1,
+            )
+         );
+
+        $viewData = new stdClass();
+        $viewData->viewFolder = $this->viewFolder;
+        $viewData->subViewFolder = "update";
+        $viewData->item = $item;
+        
+        $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index",$viewData);
+    }
+
+    public function update_product($id){
+
+        $this->load->library("form_validation");
+
+        // Kurallar yazilir..
+        $this->form_validation->set_rules("title", "Başlık", "required|trim");
+
+        $this->form_validation->set_message(
+            array(
+                "required"  => "<b>{field}</b> alanı doldurulmalıdır"
+            )
+        );
+
+        // Form Validation Calistirilir..
+        // TRUE - FALSE
+        $validate = $this->form_validation->run();
+
+        if($validate){
+
+            $update = $this->product_model->update_product(
+                array(
+                    "id" => $id,
+                ),
+                array (
+                    "title" => $this->input->post("title"),
+                    "description" => $this->input->post("description"),
+                    "url" => convertSEO($this->input->post("title")),
+                )
+                );
+            if($update){
+                redirect(base_url("products"));
+            }else{
+                redirect(base_url("products"));
+            }
+
+        } else {
+
+            $viewData = new stdClass();
+
+            $item = $this->product_model->get(
+                array(
+                    "id" => $id,
+                )
+                );
+
+            /** View'e gönderilecek Değişkenlerin Set Edilmesi.. */
+            $viewData->viewFolder = $this->viewFolder;
+            $viewData->subViewFolder = "update";
+            $viewData->form_error = true;
+            $viewData->item = $item;
+
+            $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
+        }
+
+        // Başarılı ise
+            // Kayit işlemi baslar
+        // Başarısız ise
+            // Hata ekranda gösterilir...
+
+    }
 
 }

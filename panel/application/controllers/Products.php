@@ -175,5 +175,18 @@ class Products extends CI_Controller
             // Hata ekranda gösterilir...
 
     }
+    public function delete($id){
+
+        $delete = $this->product_model->delete(
+            array(
+                "id" => $id
+            ));
+        
+        if($delete){
+           
+        }else{
+            redirect(base_url("products"));
+        }
+    }
 
 }

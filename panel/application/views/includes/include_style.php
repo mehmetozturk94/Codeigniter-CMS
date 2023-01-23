@@ -9,6 +9,10 @@
 <link rel="stylesheet" href="<?php echo base_url("assets"); ?>/assets/css/core.css">
 <link rel="stylesheet" href="<?php echo base_url("assets"); ?>/assets/css/app.css">
 <link rel="stylesheet" href="<?php echo base_url("assets"); ?>/assets/css/custom.css">
+<link href="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.0/dist/sweetalert2.min.css
+" rel="stylesheet">
+</link>
 <!-- endbuild -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900,300">
 <script src="<?php echo base_url("assets"); ?>/libs/bower/breakpoints.js/dist/breakpoints.min.js"></script>

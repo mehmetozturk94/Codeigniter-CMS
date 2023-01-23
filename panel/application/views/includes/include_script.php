@@ -7,6 +7,9 @@
 <script src="<?php echo base_url("assets"); ?>/libs/bower/perfect-scrollbar/js/perfect-scrollbar.jquery.js"></script>
 <script src="<?php echo base_url("assets"); ?>/libs/bower/PACE/pace.min.js"></script>
 <!-- endbuild -->
+<script src="
+https://cdn.jsdelivr.net/npm/sweetalert2@11.7.0/dist/sweetalert2.all.min.js
+"></script>
 
 <!-- build:js <?php echo base_url("assets"); ?>/assets/js/app.min.js -->
 <!-- <script src="<?php echo base_url("assets"); ?>/assets/js/app.min.js"></script> -->
@@ -15,3 +18,4 @@
 <script src="<?php echo base_url("assets"); ?>/libs/bower/moment/moment.js"></script>
 <script src="<?php echo base_url("assets"); ?>/libs/bower/fullcalendar/dist/fullcalendar.min.js"></script>
 <script src="<?php echo base_url("assets"); ?>/assets/js/fullcalendar.js"></script>
+<script src="<?php echo base_url("assets"); ?>/assets/js/custom.js"></script>

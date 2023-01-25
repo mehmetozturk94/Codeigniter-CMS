@@ -183,10 +183,22 @@ class Products extends CI_Controller
             ));
         
         if($delete){
-           
+            redirect(base_url("products"));
         }else{
             redirect(base_url("products"));
         }
     }
-
+    public function isActiveSetter($id){
+        if($id){
+            $isActive = ($this->input->post("data") === 'true') ? 1 : 0;
+            $this->product_model->update_product(
+                array(
+                    "id" => $id
+                ),
+                array(
+                    "isActive" => $isActive
+                )
+            );
+        }
+    }
 }

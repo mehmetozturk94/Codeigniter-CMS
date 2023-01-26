@@ -16,6 +16,7 @@
             <?php  }else{ ?>
             <table class="table table-hover table-striped">
                 <thead>
+                    <th><i class="fa fa-reorder"></i></th>
                     <th>#id</th>
                     <th>url</th>
                     <th>Başlık</th>
@@ -23,9 +24,10 @@
                     <th>Durumu</th>
                     <th>İşlem</th>
                 </thead>
-                <tbody>
+                <tbody class="sortable" data-url="<?php echo base_url("products/rankSetter"); ?>">
                     <?php foreach($items as $item) { ?>
-                    <tr>
+                    <tr id="ord-<?php echo $item->id ?>">
+                        <td><i class="fa fa-reorder"></i></td>
                         <td><?php echo $item->id ?></td>
                         <td><?php echo $item->url ?></td>
                         <td><?php echo $item->title ?></td>

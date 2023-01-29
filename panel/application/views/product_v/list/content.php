@@ -38,13 +38,16 @@
                                 <?php echo ($item->isActive) ? "checked" : "" ?> />
                         </td>
                         <td>
-                            <a data-url="<?php echo base_url("products/delete/$item->id") ?>"
+                            <button data-url="<?php echo base_url("products/delete/$item->id") ?>"
                                 href="<?php echo base_url("products/delete/$item->id") ?>"
                                 class="btn btn-sm btn-danger btn-outline remove-btn">
-                                <i class="fa fa-trash"></i> Sil</a>
+                                <i class="fa fa-trash"></i> Sil</button>
                             <a href="<?php echo base_url("products/update/$item->id") ?>"
                                 class="btn btn-sm btn-info btn-outline"><i class="fa fa-pencil-square-o"></i>
                                 Düzenle</a>
+                            <a href="<?php echo base_url("products/image_form/$item->id") ?>"
+                                class="btn btn-sm btn-dark btn-outline"><i class="fa fa-image"></i>
+                                Resimler</a>
                         </td>
                     </tr>
                     <?php } ?>

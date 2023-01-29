@@ -257,7 +257,6 @@ class Products extends CI_Controller
                 $data = $this->upload->data("file_name");
                 $this->product_image_model->add(
                     array(
-                        "id"            => $id,
                         "product_id"    => $id,
                         "img_url"       => $data,
                         "rank"          => 0,

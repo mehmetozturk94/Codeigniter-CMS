@@ -236,13 +236,22 @@ class Products extends CI_Controller
                 "id" => $id
             ));
 
+         $viewData->item_image = $this->product_image_model->get_all(
+                array(
+                    'product_id' => $id
+                )
+                );
+
         $this->load->view("{$viewData->viewFolder}/{$viewData->subViewFolder}/index", $viewData);
     }
     public function image_upload($id){
 
+        $file_name = convertSEO(pathinfo($_FILES["file"]["name"], PATHINFO_FILENAME)) . "." . pathinfo($_FILES["file"]["name"], PATHINFO_EXTENSION);
+
         $config['upload_path']          = "uploads/$this->viewFolder";
         $config['allowed_types']        = "gif|jpg|png|jpeg";
-
+        $config['file_name']            = $file_name;
+        
         $this->load->library('upload', $config);
         $upload = $this->upload->do_upload('file');
         
@@ -267,4 +276,5 @@ class Products extends CI_Controller
                 );
         }
     }
+
 }

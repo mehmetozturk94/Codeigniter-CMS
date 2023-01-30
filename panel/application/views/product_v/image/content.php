@@ -24,6 +24,11 @@
     <div class="col-md-12">
         <div class="widget">
             <div class="widget-body">
+                <?php if(empty($item_image)){ ?>
+                <div class="alert alert-info text-center">
+                    <p>Burada herhangi bir resim bulunmamaktadır.</p>
+                </div>
+                <?php  }else{ ?>
                 <table class="table table-bordered table-striped table-hover pictures_list">
                     <thead>
                         <th>#id</th>
@@ -33,19 +38,20 @@
                         <th>İşlem</th>
                     </thead>
                     <tbody>
-
+                        <?php foreach($item_image as $item_image_read)
+                        { ?>
                         <tr>
-                            <td class="w100 text-center">#1</td>
+                            <td class="w100 text-center">#<?php echo $item_image_read->id ?></td>
                             <td class="w100 text-center">
                                 <img width="30"
-                                    src="http://kablosuzkedi.com/wp-content/uploads/2016/11/KablosuzKedi_2-1080x1206.png"
+                                    src="<?php echo base_url("uploads/{$viewFolder}/$item_image_read->img_url") ?>"
                                     alt="" class="img-responsive">
                             </td>
-                            <td>deneme-urunu.jpg</td>
+                            <td><?php echo $item_image_read->img_url ?></td>
                             <td class="w100 text-center">
                                 <input data-url="<?php echo base_url("product/isActiveSetter/"); ?>" class="isActive"
                                     type="checkbox" data-switchery data-color="#10c469"
-                                    <?php echo (true) ? "checked" : ""; ?> />
+                                    <?php echo ($item_image_read->id) ? "checked" : ""; ?> />
                             </td>
                             <td class="w100 text-center">
                                 <button data-url="<?php echo base_url("product/delete/"); ?>"
@@ -54,72 +60,14 @@
                                 </button>
                             </td>
                         </tr>
-                        <tr>
-                            <td class="w100 text-center">#1</td>
-                            <td class="w100 text-center">
-                                <img width="30"
-                                    src="http://kablosuzkedi.com/wp-content/uploads/2016/11/KablosuzKedi_2-1080x1206.png"
-                                    alt="" class="img-responsive">
-                            </td>
-                            <td>deneme-urunu.jpg</td>
-                            <td class="w100 text-center">
-                                <input data-url="<?php echo base_url("product/isActiveSetter/"); ?>" class="isActive"
-                                    type="checkbox" data-switchery data-color="#10c469"
-                                    <?php echo (true) ? "checked" : ""; ?> />
-                            </td>
-                            <td class="w100 text-center">
-                                <button data-url="<?php echo base_url("product/delete/"); ?>"
-                                    class="btn btn-sm btn-danger btn-outline remove-btn btn-block">
-                                    <i class="fa fa-trash"></i> Sil
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w100 text-center">#1</td>
-                            <td class="w100 text-center">
-                                <img width="30"
-                                    src="http://kablosuzkedi.com/wp-content/uploads/2016/11/KablosuzKedi_2-1080x1206.png"
-                                    alt="" class="img-responsive">
-                            </td>
-                            <td>deneme-urunu.jpg</td>
-                            <td class="w100 text-center">
-                                <input data-url="<?php echo base_url("product/isActiveSetter/"); ?>" class="isActive"
-                                    type="checkbox" data-switchery data-color="#10c469"
-                                    <?php echo (true) ? "checked" : ""; ?> />
-                            </td>
-                            <td class="w100 text-center">
-                                <button data-url="<?php echo base_url("product/delete/"); ?>"
-                                    class="btn btn-sm btn-danger btn-outline remove-btn btn-block">
-                                    <i class="fa fa-trash"></i> Sil
-                                </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="w100 text-center">#1</td>
-                            <td class="w100 text-center">
-                                <img width="30"
-                                    src="http://kablosuzkedi.com/wp-content/uploads/2016/11/KablosuzKedi_2-1080x1206.png"
-                                    alt="" class="img-responsive">
-                            </td>
-                            <td>deneme-urunu.jpg</td>
-                            <td class="w100 text-center">
-                                <input data-url="<?php echo base_url("product/isActiveSetter/"); ?>" class="isActive"
-                                    type="checkbox" data-switchery data-color="#10c469"
-                                    <?php echo (true) ? "checked" : ""; ?> />
-                            </td>
-                            <td class="w100 text-center">
-                                <button data-url="<?php echo base_url("product/delete/"); ?>"
-                                    class="btn btn-sm btn-danger btn-outline remove-btn btn-block">
-                                    <i class="fa fa-trash"></i> Sil
-                                </button>
-                            </td>
-                        </tr>
-
+                        <?php } ?>
 
 
                     </tbody>
 
                 </table>
+                <?php } ?>
+
             </div><!-- .widget-body -->
         </div><!-- .widget -->
     </div><!-- END column -->
